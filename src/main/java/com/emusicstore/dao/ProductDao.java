@@ -14,7 +14,6 @@ public class ProductDao {
 
     public List<Product> getProductList() {
         Product product1 = new Product();
-
         product1.setProductName("Guitar1");
         product1.setProductCategory("Instrument");
         product1.setProductDescription("This is a fender strat guitar!");
@@ -24,8 +23,52 @@ public class ProductDao {
         product1.setUnitInStock(11);
         product1.setProductManufacturer("Fender");
 
+        Product product2 = new Product();
+        product2.setProductName("Piano");
+        product2.setProductCategory("Instrument");
+        product2.setProductDescription("Used piano");
+        product2.setProductPrice(120000);
+        product2.setProductCondition("used");
+        product2.setProductStatus("Active");
+        product2.setUnitInStock(11);
+        product2.setProductManufacturer("Petrof");
+
+        Product product3 = new Product();
+        product3.setProductName("Drum set");
+        product3.setProductCategory("Instrument");
+        product3.setProductDescription("Fantastic Drum Set");
+        product3.setProductPrice(1200);
+        product3.setProductCondition("Brand New!");
+        product3.setProductStatus("Active");
+        product3.setUnitInStock(11);
+        product3.setProductManufacturer("Perl");
+
+        Product product4 = new Product();
+        product4.setProductName("Bass Guitar");
+        product4.setProductCategory("Instrument");
+        product4.setProductDescription("This is a fender bass guitar!");
+        product4.setProductPrice(1200);
+        product4.setProductCondition("new");
+        product4.setProductStatus("Active");
+        product4.setUnitInStock(11);
+        product4.setProductManufacturer("Fender");
+
+        Product product5 = new Product();
+        product5.setProductName("Combo");
+        product5.setProductCategory("Accessories");
+        product5.setProductDescription("This is used VOX combo from 1960!");
+        product5.setProductPrice(1200);
+        product5.setProductCondition("used");
+        product5.setProductStatus("Active");
+        product5.setUnitInStock(11);
+        product5.setProductManufacturer("VOX");
+
         productList=new ArrayList<Product>();
         productList.add(product1);
+        productList.add(product2);
+        productList.add(product3);
+        productList.add(product4);
+        productList.add(product5);
 
         return productList;
     }
