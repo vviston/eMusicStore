@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ include file="/WEB-INF/views/template/header.jsp" %>
 
 <div class="container-wrapper">
@@ -17,6 +18,7 @@
                 <th>Category</th>
                 <th>Condition</th>
                 <th>Price</th>
+                <th></th>
             </thead>
             <c:forEach items="${products}" var="product">
                 <tr>
@@ -25,6 +27,9 @@
                     <td>${product.productCategory}</td>
                     <td>${product.productCondition}</td>
                     <td>${product.productPrice} USD</td>
+
+                    <%--HTTP request is sent with specific productId to the controller--%>
+                    <th><a href="<spring:url value="/productList/viewProduct/${product.productId}"/>"><span class="glyphicon glyphicon-info-sign"></span></a></th>
                 </tr>
             </c:forEach>
         </table>

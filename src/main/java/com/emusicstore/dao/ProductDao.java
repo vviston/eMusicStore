@@ -2,6 +2,7 @@ package com.emusicstore.dao;
 
 import com.emusicstore.model.Product;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class ProductDao {
 
     public List<Product> getProductList() {
         Product product1 = new Product();
+        product1.setProductId("1");
         product1.setProductName("Guitar1");
         product1.setProductCategory("Instrument");
         product1.setProductDescription("This is a fender strat guitar!");
@@ -24,6 +26,7 @@ public class ProductDao {
         product1.setProductManufacturer("Fender");
 
         Product product2 = new Product();
+        product2.setProductId("2");
         product2.setProductName("Piano");
         product2.setProductCategory("Instrument");
         product2.setProductDescription("Used piano");
@@ -34,6 +37,7 @@ public class ProductDao {
         product2.setProductManufacturer("Petrof");
 
         Product product3 = new Product();
+        product3.setProductId("3");
         product3.setProductName("Drum set");
         product3.setProductCategory("Instrument");
         product3.setProductDescription("Fantastic Drum Set");
@@ -44,6 +48,7 @@ public class ProductDao {
         product3.setProductManufacturer("Perl");
 
         Product product4 = new Product();
+        product4.setProductId("4");
         product4.setProductName("Bass Guitar");
         product4.setProductCategory("Instrument");
         product4.setProductDescription("This is a fender bass guitar!");
@@ -54,6 +59,7 @@ public class ProductDao {
         product4.setProductManufacturer("Fender");
 
         Product product5 = new Product();
+        product5.setProductId("5");
         product5.setProductName("Combo");
         product5.setProductCategory("Accessories");
         product5.setProductDescription("This is used VOX combo from 1960!");
@@ -72,4 +78,13 @@ public class ProductDao {
 
         return productList;
     }
+
+    public Product getProductById(String productId ) throws IOException{
+        for (Product product: getProductList()) {
+            if (product.getProductId().equals(productId)) {
+                return product;
+            }
+        }   throw new IOException("No product found:");
+    }
+
 }

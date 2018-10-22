@@ -16,12 +16,12 @@
                 </div>
 
                 <div class="col-md-5">
-                    <h3>Product Name</h3>
-                    <p>Product Description</p>
-                    <p>Manufacturer</p>
-                    <p>Category</p>
-                    <p>Condition</p>
-                    <p>Price</p>
+                    <h3>${product.productName}</h3>
+                    <p>${product.productDescription}</p>
+                    <p>${product.productManufacturer}</p>
+                    <p>${product.productCategory}</p>
+                    <p>${product.productCondition}</p>
+                    <p>${product.productPrice}</p>
                 </div>
             </div>
 
