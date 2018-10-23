@@ -18,10 +18,10 @@
                 <div class="col-md-5">
                     <h3>${product.productName}</h3>
                     <p>${product.productDescription}</p>
-                    <p>${product.productManufacturer}</p>
-                    <p>${product.productCategory}</p>
-                    <p>${product.productCondition}</p>
-                    <p>${product.productPrice}</p>
+                    <p><strong>Manufacturer</strong> : ${product.productManufacturer}</p>
+                    <p><strong>Category</strong> : ${product.productCategory}</p>
+                    <p><strong>Condition</strong> : ${product.productCondition}</p>
+                    <p>${product.productPrice} USD</p>
                 </div>
             </div>
 
