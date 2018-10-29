@@ -48,4 +48,18 @@ public class HomeController {
         model.addAttribute("products", products);
         return "productInventory";
     }
+
+    @RequestMapping
+    public String addProduct(Model model) {
+        Product product = new Product();
+        product.setProductCategory("Instrument");
+        product.setProductCondition("New");
+        product.setProductDescription("Nice Fender Guitar");
+        product.setProductManufacturer("Fender");
+        product.setProductName("Guitar");
+        product.setProductPrice(200);
+        product.setProductStatus("On Stock");
+        model.addAttribute("product", product);
+        return "addProduct";
+    }
 }
