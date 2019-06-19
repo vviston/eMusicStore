@@ -1,7 +1,7 @@
 package com.emusicstore.controller;
 
-import com.emusicstore.dao.ProductDao;
-import com.emusicstore.model.Product;
+import com.emusicstore.dao.UserDao;
+import com.emusicstore.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -25,7 +26,7 @@ public class HomeController {
     private Path path;
 
     @Autowired
-    private ProductDao productDao;
+    private UserDao userDao;
 
     @RequestMapping("/")
     public String home() {
@@ -33,18 +34,18 @@ public class HomeController {
     }
 
 
-    @RequestMapping("/productList")
-    public String getProducts(Model model) {
-        List<Product> products = productDao.getAllProducts();
-        model.addAttribute("products", products);
-        return "productList";
+    @RequestMapping("/userList")
+    public String getUsers(Model model) {
+        List<User> users = userDao.getAllUsers();
+        model.addAttribute("users", users);
+        return "userList";
     }
 
-    @RequestMapping("/productList/viewProduct/{productId}")
-    public String viewProduct(@PathVariable Long productId, Model model) throws IOException { //path variable takes productId from mapping
-        Product product = productDao.getProductById(productId);
-        model.addAttribute(product); //add atribute to the view
-        return "viewProduct";
+    @RequestMapping("/userList/viewUser/{userId}")
+    public String viewUser(@PathVariable Long productId, Model model) throws IOException { //path variable takes productId from mapping
+        User user = userDao.getUserById(productId);
+        model.addAttribute(user); //add atribute to the view
+        return "viewUser";
     }
 
     @RequestMapping("/admin")
@@ -54,45 +55,45 @@ public class HomeController {
 
     @RequestMapping("/admin/productInventory")
     public String productInventory(Model model) {
-        List<Product> products = productDao.getAllProducts();
+        List<User> products = userDao.getAllUsers();
         model.addAttribute("products", products);
         return "productInventory";
     }
 
-    @RequestMapping("/admin/productInventory/addProduct")
+    @RequestMapping("/admin/userInventory/addUser")
     public String addProduct(Model model) {
-        Product product = new Product();
-        product.setProductCategory("instrument");
-        product.setProductCondition("new");
-        product.setProductStatus("active");
-        model.addAttribute("product", product);
-        return "addProduct";
+        User user = new User();
+        user.setFullName("instrument");
+        user.setComsi("new");
+        user.setRoom("R134");
+        user.setTeam("TeamPeat");
+        user.setStartDate(new Date());
+        model.addAttribute("user", user);
+        return "addUser";
     }
 
-    @RequestMapping(value = "/admin/productInventory/addProduct", method = RequestMethod.POST)
-    public String addProductPost(@ModelAttribute("product") Product product, HttpServletRequest request) {
-        productDao.addProduct(product);
-        MultipartFile productImage = product.getProductImage();
+    @RequestMapping(value = "/admin/userInventory/addUser", method = RequestMethod.POST)
+    public String addProductPost(@ModelAttribute("user") User user, HttpServletRequest request) {
+        userDao.addUser(user);
+        MultipartFile productImage = user.getUserPhoto();
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-        path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + product.getProductId()+".png");
-
+        path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + user.getId()+ ".png");
         if (productImage != null && !productImage.isEmpty()) {
             try {
                 productImage.transferTo(new File(path.toString()));
             } catch (IOException e) {
                 e.printStackTrace();
-                throw new RuntimeException("Product image saving failed!");
+                throw new RuntimeException("User image saving failed!");
             }
         }
 
-        return "redirect:/admin/productInventory";
+        return "redirect:/admin/userInventory";
     }
 
-    @RequestMapping("/admin/productInventory/deleteProduct/{id}")
-    public String deleteProduct(@PathVariable Long id, Model model, HttpServletRequest request) throws IOException{
-
+    @RequestMapping("/admin/userInventory/deleteUser/{id}")
+    public String deleteProduct(@PathVariable Long id, Model model, HttpServletRequest request) {
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-        path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + id +".png");
+        path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + id +".png");
 
         if (Files.exists(path)) {
             try {
@@ -101,10 +102,7 @@ public class HomeController {
             e.printStackTrace();
             }
         }
-
-        productDao.deleteProduct(id);
-
-
-        return "redirect:/admin/productInventory";
+        userDao.deleteUser(id);
+        return "redirect:/admin/userInventory";
     }
 }

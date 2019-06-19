@@ -1,7 +1,7 @@
 package com.emusicstore.dao.impl;
 
-import com.emusicstore.dao.ProductDao;
-import com.emusicstore.model.Product;
+import com.emusicstore.dao.UserDao;
+import com.emusicstore.model.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,36 +13,36 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class ProductDaoImpl implements ProductDao {
+public class UserDaoImpl implements UserDao {
 
     @Autowired
     private SessionFactory sessionFactory; //singleton pattern
 
-    public void addProduct(Product product) {
+    public void addUser(User user) {
         Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(product);
+        session.saveOrUpdate(user);
         session.flush();
 
     }
 
-    public Product getProductById(Long id) {
+    public User getUserById(Long id) {
         Session session = sessionFactory.getCurrentSession();
-        Product product = (Product) session.get(Product.class, id);
+        User user = (User) session.get(User.class, id);
         session.flush();
-        return product;
+        return user;
     }
 
-    public List<Product> getAllProducts() {
+    public List<User> getAllUsers() {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("FROM Product");
-        List<Product> products = query.list();
+        Query query = session.createQuery("FROM User");
+        List<User> users = query.list();
         session.flush();
-        return products;
+        return users;
     }
 
-    public void deleteProduct(Long id) {
+    public void deleteUser(Long id) {
         Session session = sessionFactory.getCurrentSession();
-        session.delete(getProductById(id));
+        session.delete(getUserById(id));
         session.flush();
     }
 }

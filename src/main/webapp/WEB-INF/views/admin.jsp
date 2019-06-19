@@ -10,9 +10,9 @@
         </div>
 
         <h3>
-            <a href="<c:url value="/admin/productInventory" />" >Product Inventory</a>
+            <a href="<c:url value="/admin/userInventory" />" >User Inventory</a>
         </h3>
 
-        <p>Here you can view, check and modify the product invenetory!</p>
+        <p>Here you can view, check and modify the product inventory!</p>
 
 <%@include file="/WEB-INF/views/template/footer.jsp" %>

@@ -4,27 +4,27 @@
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
-            <h1>Add Product!</h1>
+            <h1>Add User!</h1>
 
-            <p class="lead">Fill the below information to add a product!</p>
+            <p class="lead">Fill the below information to add a user!</p>
         </div>
 
-        <form:form action="${pageContext.request.contextPath}/admin/productInventory/addProduct" method="post" commandName="product" enctype="multipart/form-data">
+        <form:form action="${pageContext.request.contextPath}/admin/userInventory/addUser" method="post" commandName="user" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name</label>
-            <form:input path="productName" id="name" class="form-Control"/>
+            <form:input path="userName" id="name" class="form-Control"/>
         </div>
 
         <div class="form-group">
             <label for="category">Category</label>
             <%--<label class="checkbox-inline"><form:radiobutton path="" id="category" value="instrument"/>Instrument</label>--%>
-            <label class="checkbox-inline"><form:radiobutton path="productCategory" id="category" value="record"/>Record</label>
-            <label class="checkbox-inline"><form:radiobutton path="productCategory" id="category" value="accessory"/>Accessory</label>
+            <label class="checkbox-inline"><form:radiobutton path="userCategory" id="category" value="record"/>Record</label>
+            <label class="checkbox-inline"><form:radiobutton path="userCategory" id="category" value="accessory"/>Accessory</label>
         </div>
 
         <div class="form-group">
             <label for="description">Description</label>
-            <form:textarea path="productDescription" id="description" class="form-Control"/>
+            <form:textarea path="userDescription" id="description" class="form-Control"/>
         </div>
 
         <div class="form-group">
