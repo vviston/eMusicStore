@@ -53,11 +53,11 @@ public class HomeController {
         return "admin";
     }
 
-    @RequestMapping("/admin/productInventory")
+    @RequestMapping("/admin/userInventory")
     public String productInventory(Model model) {
-        List<User> products = userDao.getAllUsers();
-        model.addAttribute("products", products);
-        return "productInventory";
+        List<User> users = userDao.getAllUsers();
+        model.addAttribute("users", users);
+        return "userInventory";
     }
 
     @RequestMapping("/admin/userInventory/addUser")
@@ -66,8 +66,10 @@ public class HomeController {
         user.setFullName("instrument");
         user.setComsi("new");
         user.setRoom("R134");
-        user.setTeam("TeamPeat");
+
         user.setStartDate(new Date());
+        user.setCluster("default cluster");
+        user.setChapter("default chapter");
         model.addAttribute("user", user);
         return "addUser";
     }
