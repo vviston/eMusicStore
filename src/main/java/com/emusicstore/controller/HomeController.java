@@ -29,7 +29,9 @@ public class HomeController {
     private UserDao userDao;
 
     @RequestMapping("/")
-    public String home() {
+    public String home(Model model) {
+        List<User> users = userDao.getAllUsers();
+        model.addAttribute("users", users);
         return "home";
     }
 
@@ -79,7 +81,7 @@ public class HomeController {
         userDao.addUser(user);
         MultipartFile productImage = user.getUserPhoto();
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-        path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + user.getId()+ ".png");
+        path = Paths.get(rootDirectory + "/resources/images/" + user.getId()+ ".png");
         if (productImage != null && !productImage.isEmpty()) {
             try {
                 productImage.transferTo(new File(path.toString()));

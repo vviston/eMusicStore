@@ -23,7 +23,7 @@
             </thead>
             <c:forEach items="${users}" var="user">
                 <tr>
-                    <td><img src="<c:url value="/resources/images/${user.id}.png" />" alt="image" style="width: 100%"/></td>
+                    <td><img src="<c:url value="/resources/images/${user.id}.png" />" class="img-thumbnail" alt="image" width="80"/></td>
                     <td>${user.fullName}</td>
                     <td>${user.comsi}</td>
                     <td>${user.startDate}</td>

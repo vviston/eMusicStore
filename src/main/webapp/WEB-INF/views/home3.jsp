@@ -13,16 +13,10 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
 
     <!-- Bootstrap core CSS -->
-    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="<c:url value="/resources/css/album.css" />" rel="stylesheet">
-
-    <!-- DataTables styles -->
-    <link href="<c:url value="/resources/css/dataTables.bootstrap4.min.css" />" rel="stylesheet">
-    <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
-
-
+    <link href="album.css" rel="stylesheet">
 </head>
 
 <body>
@@ -72,64 +66,33 @@
         </div>
     </section>
 
+
+    <!-- This is the div that I display for each user and here start the problem -->
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Photo</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach items="${users}" var="user">
-                        <tr>
-                            <div class="col-md-4">
-                                <div class="card mb-4 box-shadow">
-                                    <img class="card-img-top" src="<c:url value="/resources/images/${user.id}.png" />" alt="Card image cap">
-                                    <div class="card-body">
-                                        <p class="card-text"><c:out value="${user.fullName}"/></p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                            </div>
-                                            <small class="text-muted">9 mins</small>
-                                        </div>
+                <c:forEach items="${users}" var="user">
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="<c:url value="/resources/images/${user.id}.png" />" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text"><c:out value="${user.fullName}"/></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                                     </div>
+                                    <small class="text-muted">9 mins</small>
                                 </div>
                             </div>
-                        </tr>
-                        </c:forEach>
-                        </tfoot>
-                    </table>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>
 
-    <div style="width: 80%">
-        <table id="example2" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Photo</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${users}" var="user">
-            <tr>
-                <td><c:out value="${user.fullName}"/></td>
-                <td><img src="<c:url value="/resources/images/${user.id}.png" />" class="img-thumbnail" alt="image" width="80"/></td>
-            </tr>
-            </c:forEach>
-            </tfoot>
-        </table>
-    </div>
-
 </main>
-
-
 
 <footer class="text-muted">
     <div class="container">
@@ -144,18 +107,10 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="<c:url value="/resources/js/jquery-3.4.1.min.js"/>"></script>
-<script src="<c:url value="/resources/js/popper.min.js"/>"></script>
-<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
-<script src="<c:url value="/resources/js/holder.min.js"/>"></script>
-<script src="<c:url value="/resources/js/jquery.dataTables.min.js"/>"></script>
-<script src="<c:url value="/resources/js/dataTables.bootstrap4.min.js"/>"></script>
-
-<script>
-    $(document).ready( function () {
-        $('#example').DataTable();
-    } );
-</script>
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.min.js"></script>
 </body>
 </html>
